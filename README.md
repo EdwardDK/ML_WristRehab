@@ -6,21 +6,23 @@
 
 ## Overview
 
-**ML_WristRehab** is a Python-based system that analyzes wrist flexion and extension rehabilitation exercises and provides **real-time feedback** on patient form. Using machine learning, the system detects deviations from correct movement patterns, guiding patients toward safer and more effective recovery.
+**ML_WristRehab** is a Python-based system that analyzes wrist flexion and extension rehabilitation exercises and provides **real-time feedback** on patient form. The system uses machine learning to detect deviations from correct movement patterns, helping patients recover safely and effectively.
 
-* Achieves **90.62% classification accuracy**
-* Processes feedback with an **average response time of 0.01 seconds**
-* Uses a webcam interface to provide instantaneous guidance
+* **Accuracy:** 90.62% on validation data
+* **Latency:** ~0.01s per frame for model inference
+* **Input:** Webcam-based hand tracking
+* **Output:** Real-time corrective feedback via overlay on video
+
+This project won **1st Place in the Medical & Health Sciences category at the Connecticut STEM Competition**.
 
 ---
 
 ## Features
 
-* Real-time wrist exercise evaluation through camera feed
-* Automatic detection of improper form
-* Feedback on movement quality and correction suggestions
-* Supports flexion and extension exercises
-* Pre-recorded datasets for training and testing
+* Collect wrist exercise data with a webcam
+* Train a LSTM + Conv1D ML model for movement classification
+* Provide **real-time feedback** to guide form correction
+* Visual metrics including confusion matrix and latency charts
 
 ---
 
@@ -37,23 +39,22 @@ cd ML_WristRehab
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install required packages:
+3. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Dependencies include:**
+**Key Dependencies:**
 
 * Python 3.10
 * OpenCV (`cv2`)
 * Mediapipe (`mediapipe`)
 * TensorFlow/Keras (`tensorflow`)
-* NumPy (`numpy`)
-* Matplotlib, Seaborn, Pandas
+* NumPy, Matplotlib, Seaborn, Pandas
 * scikit-learn (`sklearn`)
 
 ---
@@ -62,69 +63,107 @@ pip install -r requirements.txt
 
 ### 1. Data Collection
 
-Pre-record exercise sequences using the `data_collection.py` script. This generates labeled data for training the ML model.
+Use the `data_collection.py` script to record wrist movement sequences. Enter a label for each recording (`bad`, `okay`, `perfect`) and press `r` to start capturing a sequence of frames.
 
 ```bash
 python data_collection.py
 ```
 
-*(Replace with screenshot of data collection window)*
+*(Add image showing the data collection window)*
 ![Data Collection Placeholder](path/to/data_collection_image.png)
 
 ---
 
 ### 2. Training the Model
 
-Train the ML model using the processed dataset:
+Use `train_model.py` to train the machine learning model:
 
 ```bash
 python train_model.py
 ```
 
-* The model uses LSTM and Conv1D layers for sequence learning.
-* Early stopping and checkpointing are included to optimize training.
+**Model Architecture:**
 
-*(Add a plot showing training loss/accuracy if desired)*
-![Training Placeholder](path/to/training_plot.png)
+* Input → Conv1D → BatchNormalization → LSTM → Dropout → LSTM → Dense → Dropout → Dense (Softmax)
+* Uses data augmentation (adding Gaussian noise) for robustness
+* EarlyStopping and ModelCheckpoint to prevent overfitting
+
+*(Add plot showing training accuracy/loss over epochs)*
+![Training Plot Placeholder](path/to/training_plot.png)
 
 ---
 
 ### 3. Real-Time Feedback
 
-Run the real-time feedback system:
+Run the system to receive live feedback on wrist exercises:
 
 ```bash
 python real_time_feedback.py
 ```
 
-* Uses webcam input to detect wrist landmarks with Mediapipe
-* Provides corrective feedback on form through the camera window
+* Webcam input with MediaPipe hand tracking
+* Smooths landmark positions to reduce jitter
+* Displays feedback messages and color-coded cues over the video
 
-*(Add GIF showing live feedback in action)*
-![Real-Time Feedback Placeholder](path/to/feedback_demo.gif)
+*(Add GIF demonstrating real-time feedback)*
+![Feedback Demo Placeholder](path/to/feedback_demo.gif)
 
 ---
 
-## Results / Metrics
+### 4. Model Evaluation
+
+Use `evaluate_model.py` to generate metrics and visualizations:
+
+* Confusion Matrix
+* Precision, Recall, F1-Score heatmaps
+* Latency analysis for MediaPipe extraction, model inference, and feedback calculation
+
+```bash
+python evaluate_model.py
+```
+
+*(Add images of confusion matrix, classification metrics, and latency chart)*
+<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/confusion_matrix.png?raw=true" width="200" height="100">
+![Classification Metrics Placeholder](path/to/classification_metrics.png)
+![Latency Chart Placeholder](path/to/latency_chart.png)
+
+---
+
+## Results
 
 * **Classification Accuracy:** 90.62%
-* **Average Response Time:** 0.01 seconds per frame
+* **Real-Time Latency:** ~0.01 seconds per inference
+* **Majority Vote Smoothing:** Stabilizes predictions for more reliable feedback
 
-*(Add confusion matrix or other visualizations here)*
-![Confusion Matrix](https://github.com/EdwardDK/ML_WristRehab/blob/main/confusion_matrix.png?raw=true)
+---
+
+## Project Structure
+
+```
+ML_WristRehab/
+├─ data_collection.py      # Script to collect labeled exercise sequences
+├─ train_model.py          # Script to train LSTM + Conv1D model
+├─ real_time_feedback.py   # Script to run real-time feedback
+├─ evaluate_model.py       # Script to analyze model performance
+├─ utils.py                # Helper functions (landmark processing, feedback)
+├─ dataset/                # Folder containing recorded sequences
+├─ model/                  # Saved ML model (wrist_model.h5)
+├─ README.md               # Project documentation
+└─ requirements.txt        # Python dependencies
+```
 
 ---
 
 ## Future Work
 
-* Extend support to additional wrist or hand exercises
-* Improve feedback clarity and visualization
-* Explore integration with mobile devices or AR for at-home rehab
+* Extend to other wrist or hand exercises
+* Improve feedback visuals for patients
+* Explore mobile or AR integration for at-home rehab
 
 ---
 
 ## License
 
-No license is applied. For educational and portfolio purposes only.
+No license applied. For educational and portfolio purposes only.
 
 ---
