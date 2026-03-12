@@ -111,7 +111,7 @@ python real_time_feedback.py
 * **Average Response Time:** 0.01 seconds per frame
 
 *(Add confusion matrix or other visualizations here)*
-![Results Placeholder](path/to/results_image.png)
+![Confusion Matrix](https://github.com/EdwardDK/ML_WristRehab/blob/main/confusion_matrix.png?raw=true)
 
 ---
 
@@ -128,7 +128,3 @@ python real_time_feedback.py
 No license is applied. For educational and portfolio purposes only.
 
 ---
-
-I can also make a **cleaner version with sections color-coded and properly formatted for GitHub** with markdown tables for metrics, nice-looking plots, and GIF placeholders so it looks like a polished portfolio piece.
-
-Do you want me to do that next?
