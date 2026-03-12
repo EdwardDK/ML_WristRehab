@@ -124,7 +124,7 @@ python evaluate_model.py
 
 *(Add images of confusion matrix, classification metrics, and latency chart)*
 <img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/confusion_matrix.png?raw=true" width="700" height="450">
-<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/classification_metrics.png?raw=true" width="600" height="450">
+<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/classification_metrics.png?raw=true" width="700" height="450">
 ![Latency Chart Placeholder](path/to/latency_chart.png)
 
 ---
