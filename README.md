@@ -69,7 +69,6 @@ Use the `data_collection.py` script to record wrist movement sequences. Enter a 
 python data_collection.py
 ```
 
-*(Add image showing the data collection window)*
 <img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/Screenshot%202026-03-12%20201338.png?raw=true" width="700" height="450">
 
 ---
@@ -89,7 +88,7 @@ python train_model.py
 * EarlyStopping and ModelCheckpoint to prevent overfitting
 
 *(Add plot showing training accuracy/loss over epochs)*
-![Training Plot Placeholder](path/to/training_plot.png)
+<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/myplot2.png?raw=true" width="700" height="450">
 
 ---
 
