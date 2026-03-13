@@ -2,7 +2,7 @@ import numpy as np
 import os
 SEQ_LENGTH = 30
 NUM_FEATURES = 21 * 3
-DATASET_DIR = "Dataset"  # main dataset folder
+DATASET_DIR = "Dataset"  
 
 def save_sequence(sequence, label, seq_id):
     """
@@ -36,18 +36,18 @@ def get_detailed_feedback(pred, landmarks):
     class_idx = np.argmax(pred)
     angle = calculate_wrist_angle(landmarks)
 
-    # 1. Check for 'Perfect' status from AI model
+
     if class_idx == 2:
         return f"PERFECT: Angle {int(angle)}°. Smooth motion!", (0, 255, 0)
 
-    # 2. Constructive feedback based on geometry
+
     advice = []
 
-    # UPDATED: Lowered from 8 to 4 for more realistic Range of Motion
+
     if angle < 4:
         advice.append("Extend further")
 
-    # UPDATED: Increased from 0.1 to 0.15 for better tolerance
+
     if abs(landmarks[5].y - landmarks[17].y) > 0.15:
         advice.append("Level your palm")
 

@@ -34,7 +34,7 @@ while True:
 
     key = cv2.waitKey(1) & 0xFF
     if key == ord('r'):
-        # Record a sequence of SEQ_LENGTH frames
+
         temp_seq = deque(maxlen=SEQ_LENGTH)
         print("Recording...")
         while len(temp_seq) < SEQ_LENGTH:
@@ -55,7 +55,7 @@ while True:
             seq_id += 1
             print("Sequence saved.")
 
-    elif key == 27:  # ESC to quit
+    elif key == 27:
         break
 
 cap.release()

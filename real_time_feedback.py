@@ -12,10 +12,10 @@ mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.8)
 cap = cv2.VideoCapture(0)
 sequence = deque(maxlen=SEQ_LENGTH)
-pred_history = deque(maxlen=10)  # For debouncing
+pred_history = deque(maxlen=10)
 
 smoothed_landmarks = None
-alpha = 0.2  # 0.2 = Very smooth / Low sensitivity to jitter
+alpha = 0.2
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -33,7 +33,7 @@ while cap.isOpened():
                 res = model.predict(np.expand_dims(sequence, axis=0), verbose=0)[0]
                 pred_history.append(np.argmax(res))
 
-                # UPDATED: Majority check lowered from 7 to 5
+
                 stable_idx = max(set(pred_history), key=list(pred_history).count)
                 if list(pred_history).count(stable_idx) >= 5:
                     msg, color = get_detailed_feedback(res, hand_landmarks.landmark)

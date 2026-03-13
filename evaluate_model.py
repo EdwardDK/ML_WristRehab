@@ -7,10 +7,10 @@ from sklearn.metrics import confusion_matrix, classification_report, accuracy_sc
 from tensorflow.keras.models import load_model
 from matplotlib.colors import LinearSegmentedColormap
 
-# Import validation data and labels from the training script
+
 from train_model import labels, X_val, y_val
 
-# Create custom colormap using your hex code #EAD1DC
+
 custom_cmap = LinearSegmentedColormap.from_list("custom_pink", ["#ffffff", "#EAD1DC"], N=256)
 
 # ==========================================
@@ -28,7 +28,7 @@ end_time = time.time()
 y_pred_classes = np.argmax(y_pred, axis=1)
 y_true_classes = np.argmax(y_val, axis=1)
 
-# Calculate Accuracy
+
 accuracy = accuracy_score(y_true_classes, y_pred_classes)
 
 # ==========================================
@@ -42,7 +42,7 @@ print("\nDetailed Classification Report:")
 report_text = classification_report(y_true_classes, y_pred_classes, target_names=labels, zero_division=0)
 print(report_text)
 
-# Latency Calculation
+
 avg_inference_time = (end_time - start_time) / len(X_val)
 mediapipe_time = 0.045
 feedback_logic_time = 0.010
