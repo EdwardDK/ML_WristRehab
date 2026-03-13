@@ -70,7 +70,7 @@ python data_collection.py
 ```
 
 *(Add image showing the data collection window)*
-![Data Collection Placeholder](path/to/data_collection_image.png)
+<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/Screenshot%202026-03-12%20201338.png?raw=true" width="700" height="450">
 
 ---
 
