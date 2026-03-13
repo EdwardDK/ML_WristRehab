@@ -87,7 +87,6 @@ python train_model.py
 * Uses data augmentation (adding Gaussian noise) for robustness
 * EarlyStopping and ModelCheckpoint to prevent overfitting
 
-*(Add plot showing training accuracy/loss over epochs)*
 <img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/myplot2.png?raw=true" width="700" height="450">
 
 ---
@@ -105,7 +104,7 @@ python real_time_feedback.py
 * Displays feedback messages and color-coded cues over the video
 
 *(Add GIF demonstrating real-time feedback)*
-![Feedback Demo Placeholder](path/to/feedback_demo.gif)
+<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/Sequence%2001_2000.gif?raw=true" width="700" height="450">
 
 ---
 
