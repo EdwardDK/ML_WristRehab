@@ -104,7 +104,7 @@ python real_time_feedback.py
 * Displays feedback messages and color-coded cues over the video
 
 *(Add GIF demonstrating real-time feedback)*
-<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/Sequence%2001_2000.gif?raw=true" width="700" height="450">
+<img src="(https://i.imgur.com/UTbUVqt.gif)" width="700" height="450">
 
 ---
 
