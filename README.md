@@ -103,7 +103,7 @@ python real_time_feedback.py
 * Smooths landmark positions to reduce jitter
 * Displays feedback messages and color-coded cues over the video
 
-<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/Sequence01_3-ezgif.com-optimize.gif?raw=true" width="700" height="450">
+<img src="https://github.com/EdwardDK/ML_WristRehab/blob/main/Sequence01_3-ezgif.com-optimize.gif?raw=true" width="500" height="500">
 
 ---
 
