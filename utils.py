@@ -1,8 +1,18 @@
 import numpy as np
-
+import os
 SEQ_LENGTH = 30
 NUM_FEATURES = 21 * 3
+DATASET_DIR = "Dataset"  # main dataset folder
 
+def save_sequence(sequence, label, seq_id):
+    """
+    Saves a sequence of landmarks to Dataset/<label>/<seq_id>.npy
+    Creates the folder if it doesn't exist.
+    """
+    label_dir = os.path.join(DATASET_DIR, label)
+    os.makedirs(label_dir, exist_ok=True)
+    path = os.path.join(label_dir, f"{seq_id}.npy")
+    np.save(path, np.array(sequence))
 def landmarks_to_array(landmarks):
     """Convert MediaPipe landmarks to a float32 array relative to the wrist."""
     base_x, base_y, base_z = landmarks[0].x, landmarks[0].y, landmarks[0].z
